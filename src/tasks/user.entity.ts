@@ -6,19 +6,13 @@ import {
   UpdateDateColumn,
   VersionColumn,
 } from 'typeorm';
-import { StatusEnum } from './tasks.enum';
 
 @Entity()
-export class Tasks {
+export class Users {
   @PrimaryGeneratedColumn('uuid')
   id: string;
   @Column({ default: '', nullable: false })
   name: string;
-  @Column({ type: 'float', default: 0, nullable: false })
-  price: number;
-
-  @Column({ type: 'enum', enum: StatusEnum, default: StatusEnum.STATUS_OPEN })
-  status: StatusEnum;
 
   @CreateDateColumn()
   createAt: Date;

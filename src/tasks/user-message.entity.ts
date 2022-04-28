@@ -2,23 +2,23 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
   VersionColumn,
 } from 'typeorm';
-import { StatusEnum } from './tasks.enum';
+import {Users} from './user.entity';
 
 @Entity()
-export class Tasks {
+export class UserMessages {
   @PrimaryGeneratedColumn('uuid')
   id: string;
   @Column({ default: '', nullable: false })
   name: string;
-  @Column({ type: 'float', default: 0, nullable: false })
-  price: number;
 
-  @Column({ type: 'enum', enum: StatusEnum, default: StatusEnum.STATUS_OPEN })
-  status: StatusEnum;
+
+  @ManyToOne(() => Users)
+  users: Users
 
   @CreateDateColumn()
   createAt: Date;
